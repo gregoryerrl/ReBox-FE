@@ -1,0 +1,45 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+.navi {
+  background-color: #003b73;
+  height: 100%;
+  width: 300px;
+  position: relative;
+}
+
+.icon {
+  height: 25%;
+}
+
+.navbutton {
+  width: 90%;
+  border-bottom: solid 0.2px rgba(215, 215, 215, 0.563);
+  color: rgb(215, 215, 215);
+}
+
+.navbutton:hover {
+  background-color: #0074b7;
+  transition: ease-in-out 0.2s;
+  cursor: pointer;
+  color: white;
+  border-bottom: none;
+  width: 100%;
+}
+
+.icon-container {
+  border-radius: 100%;
+  background-color: #ffffff;
+  width: 150px;
+  height: 150px;
+}
+
+.navbot {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  color: rgb(215, 215, 215);
+  width: 90%;
+}

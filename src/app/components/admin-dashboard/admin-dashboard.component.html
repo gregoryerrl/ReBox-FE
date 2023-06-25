@@ -1,0 +1,26 @@
+<div class="container d-flex flex-row m-0 p-0">
+  <div class="navi d-flex flex-column">
+    <div class="icon w-100">
+      <div class="icon-container mx-auto mt-3"></div>
+    </div>
+    <div class="navbutton p-3 mx-auto navtop">Dashboard</div>
+    <div class="navbutton p-3 mx-auto">Box List</div>
+    <div class="navbutton p-3 mx-auto">QR</div>
+    <div class="p-3 mx-auto navbot">Logout</div>
+  </div>
+  <div class="container-fluid px-0">
+    <div class="row">
+      <div
+        class="col-12 col-md-12 col-lg-12 mb-3"
+        [@animate]="{ value: '*', params: { y: '-50px', delay: '400ms' } }"
+      >
+        <div class="bg-title" style="min-height: 270px">
+          <h1 class="title-name">Hi Admin,</h1>
+          <h5 class="title-revenue">
+            Your sales increased by --% and revenue increased by --%.
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

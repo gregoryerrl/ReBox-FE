@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-login-component',
@@ -16,7 +17,7 @@ export class LoginComponentComponent {
 
   public onLogin(): void {
     console.log(`Username: ${this.username}, Password: ${this.password}`);
-    const url = 'http://localhost:3000/login'; // replace with your API endpoint
+    const url = `${environment.backend_url}login`; // replace with your API endpoint
     const body = {
       username: this.username,
       password: this.password,

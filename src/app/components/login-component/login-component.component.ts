@@ -17,7 +17,7 @@ export class LoginComponentComponent {
 
   public onLogin(): void {
     console.log(`Username: ${this.username}, Password: ${this.password}`);
-    const url = `${environment.backend_url}login`; // replace with your API endpoint
+    const url = `${environment.backend_url}/login`; // replace with your API endpoint
     const body = {
       username: this.username,
       password: this.password,

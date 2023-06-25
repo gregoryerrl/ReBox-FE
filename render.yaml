@@ -1,7 +1,0 @@
-routes:
-  - src: /
-    headers:
-      - key: Access-Control-Allow-Origin
-        value: "*"
-    continue: true
-    dest: dist/index.html

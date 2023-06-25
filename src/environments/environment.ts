@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  mongo_uri: "https://rebox-be.onrender.com/"
+  mongo_url: "https://rebox-be.onrender.com"
 };

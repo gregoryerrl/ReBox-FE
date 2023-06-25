@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 interface Box {
   _id: String;
@@ -27,7 +28,7 @@ export class AdminDashboardComponent {
   getAllBoxes() {
     this.boxes = [];
     this.http
-      .get<{ boxes: Box[] }>('http://localhost:3000/boxes')
+      .get<{ boxes: Box[] }>(`${environment.mongo_url}/boxes`)
       .subscribe((response) => {
         // Filter the user list to include only active users
         this.boxes = response.boxes;
@@ -40,7 +41,7 @@ export class AdminDashboardComponent {
 
   deleteBox(id: String) {
     this.http
-      .delete<{ message: String }>(`http://localhost:3000/box/${id}`)
+      .delete<{ message: String }>(`${environment.mongo_url}/box/${id}`)
       .subscribe((response) => {
         this.getAllBoxes();
       });

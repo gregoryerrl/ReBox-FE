@@ -1,26 +1,85 @@
-<div class="container d-flex flex-row m-0 p-0">
+<div class="containermain d-flex flex-row m-0 p-0">
+  <div class="orangebanner w-100"></div>
+  <!-- Nav Bar -->
+
   <div class="navi d-flex flex-column">
-    <div class="icon w-100">
-      <div class="icon-container mx-auto mt-3"></div>
+    <div class="icon-container mx-auto mt-3 text-center">
+      <i class="bi bi-person-gear" style="font-size: 100px"></i>
     </div>
-    <div class="navbutton p-3 mx-auto navtop">Dashboard</div>
-    <div class="navbutton p-3 mx-auto">Box List</div>
-    <div class="navbutton p-3 mx-auto">QR</div>
-    <div class="p-3 mx-auto navbot">Logout</div>
-  </div>
-  <div class="container-fluid px-0">
-    <div class="row">
+    <div class="mt-3">
       <div
-        class="col-12 col-md-12 col-lg-12 mb-3"
-        [@animate]="{ value: '*', params: { y: '-50px', delay: '400ms' } }"
+        class="p-3 mx-auto"
+        [ngClass]="{ navselected: navtab == 1, navbutton: navtab != 1 }"
+        (click)="changeNavTab(1)"
       >
-        <div class="bg-title" style="min-height: 270px">
-          <h1 class="title-name">Hi Admin,</h1>
-          <h5 class="title-revenue">
-            Your sales increased by --% and revenue increased by --%.
-          </h5>
+        Dashboard
+      </div>
+      <div
+        class="p-3 mx-auto"
+        [ngClass]="{ navselected: navtab == 2, navbutton: navtab != 2 }"
+        (click)="changeNavTab(2); getAllBoxes()"
+      >
+        Boxes
+      </div>
+      <div
+        class="p-3 mx-auto"
+        [ngClass]="{ navselected: navtab == 3, navbutton: navtab != 3 }"
+        (click)="changeNavTab(3)"
+      >
+        Employees
+      </div>
+    </div>
+    <div class="p-3 mx-auto navbot text-center" (click)="Logout()">
+      Logout <i class="ml-2 bi bi-arrow-bar-right"></i>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+
+  <div class="p-5 dashboardcontainer" *ngIf="navtab == 1">
+    <div class="d-flex flex-column">
+      <h1>
+        Hello, Admin. Welcome to your
+        <strong style="color: rgb(166, 97, 0)">ReBox!</strong> Dashboard
+      </h1>
+      <div class="statscontainer d-flex mt-5 w-100">
+        <div class="card col-3 text-center p-5">
+          <h5>Total QR <i class="bi bi-qr-code-scan ml-2"></i></h5>
+          <h2>0</h2>
+        </div>
+        <div class="card col-3 text-center p-5">
+          <h5>To be packed <i class="bi bi-box-seam ml-2"></i></h5>
+          <h2>0</h2>
+        </div>
+        <div class="card col-3 text-center p-5">
+          <h5>To be delivered <i class="bi bi-truck ml-2"></i></h5>
+          <h2>0</h2>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Boxes -->
+  <div class="p-5" *ngIf="navtab == 2">
+    <button class="createbox btn btn-primary p-2">Generate New QR</button>
+    <div class="d-flex flex-column w-auto">
+      <div class="card col-sm p-2 m-3" *ngFor="let box of boxes">
+        <div class="boxlist d-flex flex-column mt-3 justify-content-center">
+          <span>QR: </span>
+          <span>Id: {{ box._id }}</span>
+          <span>Label: {{ box.label }}</span>
+          <span>Content: {{ box.content }}</span>
+          <span>Manufacturer: {{ box.manufacturer }}</span>
+          <span>Details: {{ box.details }}</span>
+          <button (click)="deleteBox(box._id)">id</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employees -->
+
+  <div class="p-5 dashboardcontainer text-center" *ngIf="navtab == 3">
+    <h1>COMING SOON <i class="bi bi-tools"></i></h1>
   </div>
 </div>

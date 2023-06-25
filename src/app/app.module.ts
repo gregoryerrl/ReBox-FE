@@ -8,14 +8,24 @@ import { AppComponent } from './app.component';
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BoxCardComponent } from './components/box-card/box-card.component';
+import { BoxDetailComponent } from './components/box-detail/box-detail-component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponentComponent,
     AdminDashboardComponent,
+    BoxCardComponent,
+    BoxDetailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

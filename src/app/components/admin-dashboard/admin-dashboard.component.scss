@@ -1,7 +1,16 @@
-.container {
-  height: 100vh;
-  width: 100vw;
+.containermain {
+  height: 100vh !important;
+  width: 100vw !important;
 }
+
+.orangebanner {
+  width: 100vw;
+  height: 30vh;
+  background-color: #ff9900;
+  position: absolute;
+  z-index: -1;
+}
+
 .navi {
   background-color: #003b73;
   height: 100%;
@@ -14,18 +23,31 @@
 }
 
 .navbutton {
-  width: 90%;
-  border-bottom: solid 0.2px rgba(215, 215, 215, 0.563);
-  color: rgb(215, 215, 215);
+  width: 80%;
+  border-bottom: solid 0.2px rgba(255, 255, 255, 0.615);
+  color: rgba(255, 255, 255, 0.615);
+
+  transition: ease-in-out 0.1s;
 }
 
 .navbutton:hover {
   background-color: #0074b7;
-  transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.1s;
   cursor: pointer;
   color: white;
   border-bottom: none;
   width: 100%;
+  font-size: 1.2rem;
+}
+
+.navselected {
+  transition: ease-in-out 0.1s;
+  cursor: pointer;
+  color: white;
+  border-bottom: none;
+  width: 100%;
+  font-size: 1.2rem;
+  cursor: default;
 }
 
 .icon-container {
@@ -41,5 +63,38 @@
   right: 0;
   position: absolute;
   color: rgb(215, 215, 215);
-  width: 90%;
+  width: 45%;
+}
+
+.navbot:hover {
+  cursor: pointer;
+}
+
+.card {
+  box-shadow: 10px 10px 17px 0px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 10px 10px 17px 0px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 10px 10px 17px 0px rgba(0, 0, 0, 0.16);
+}
+
+.dashboardcontainer {
+  width: 80%;
+}
+
+.boxlist {
+  width: 100%;
+}
+
+.createbox {
+  position: absolute;
+  right: 2rem;
+  background-color: #003b73;
+  color: white;
+}
+
+h1 {
+  color: white;
+}
+
+.statscontainer {
+  justify-content: space-evenly;
 }

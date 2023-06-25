@@ -45,6 +45,7 @@ export class LoginComponentComponent {
       (error) => {
         console.error(error); // log error for debugging purposes
         this.loginError = 'An error occurred during login. Please try again.'; // show generic error message
+        alert('Incorrect Username or Password'); // show success message
       }
     );
   }

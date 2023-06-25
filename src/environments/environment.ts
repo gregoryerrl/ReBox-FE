@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  mongo_url: "http://localhost:3000"
+  backend_url: "http://localhost:3000"
 };

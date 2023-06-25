@@ -32,7 +32,7 @@ export class BoxDetailComponent {
   getBoxDetails() {
     const id = this.route.snapshot.params['id'];
     this.http
-      .get<{ box: Box }>(`${environment.mongo_url}/box/${id}`)
+      .get<{ box: Box }>(`${environment.backend_url}/box/${id}`)
       .subscribe((response) => {
         // Filter the user list to include only active users
         this.box = response.box;

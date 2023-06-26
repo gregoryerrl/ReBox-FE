@@ -9,6 +9,8 @@ interface Box {
   content: String;
   manufacturer: String;
   details: String;
+  qrb64: String;
+  empty: Boolean;
 }
 
 @Component({
@@ -18,8 +20,32 @@ interface Box {
 })
 export class AdminDashboardComponent {
   navtab = 1;
+  pack = 0;
+  deliver = 0;
+  allboxes = 0;
   boxes: Box[] = [];
   constructor(private http: HttpClient, private router: Router) {}
+
+  ngOnInit(): void {
+    this.http
+      .get<{ count: number }>(`${environment.backend_url}/boxes/count`)
+      .subscribe((response) => {
+        // Filter the user list to include only active users
+        this.allboxes = response.count;
+      });
+    this.http
+      .get<{ count: number }>(`${environment.backend_url}/boxes/empty/count`)
+      .subscribe((response) => {
+        // Filter the user list to include only active users
+        this.pack = response.count;
+      });
+    this.http
+      .get<{ count: number }>(`${environment.backend_url}/boxes/nonempty/count`)
+      .subscribe((response) => {
+        // Filter the user list to include only active users
+        this.deliver = response.count;
+      });
+  }
 
   public Logout(): void {
     this.router.navigate(['']);

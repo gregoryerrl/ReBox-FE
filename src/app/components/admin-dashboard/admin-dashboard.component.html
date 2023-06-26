@@ -45,15 +45,15 @@
       <div class="statscontainer d-flex mt-5 w-100">
         <div class="card col-3 text-center p-5">
           <h5>Total QR <i class="bi bi-qr-code-scan ml-2"></i></h5>
-          <h2>0</h2>
+          <h2>{{ allboxes }}</h2>
         </div>
         <div class="card col-3 text-center p-5">
           <h5>To be packed <i class="bi bi-box-seam ml-2"></i></h5>
-          <h2>0</h2>
+          <h2>{{ pack }}</h2>
         </div>
         <div class="card col-3 text-center p-5">
           <h5>To be delivered <i class="bi bi-truck ml-2"></i></h5>
-          <h2>0</h2>
+          <h2>{{ deliver }}</h2>
         </div>
       </div>
     </div>
@@ -62,16 +62,18 @@
   <!-- Boxes -->
   <div class="p-5" *ngIf="navtab == 2">
     <button class="createbox btn btn-primary p-2">Generate New QR</button>
-    <div class="d-flex flex-column w-auto">
-      <div class="card col-sm p-2 m-3" *ngFor="let box of boxes">
+    <div class="d-flex flex-wrap w-auto mt-5">
+      <div class="card col-sm p-2 m-3 text-center" *ngFor="let box of boxes">
         <div class="boxlist d-flex flex-column mt-3 justify-content-center">
-          <span>QR: </span>
-          <span>Id: {{ box._id }}</span>
+          <img class="mx-auto" id="base64image" src="{{ box.qrb64 }}" />
           <span>Label: {{ box.label }}</span>
-          <span>Content: {{ box.content }}</span>
-          <span>Manufacturer: {{ box.manufacturer }}</span>
-          <span>Details: {{ box.details }}</span>
-          <button (click)="deleteBox(box._id)">id</button>
+          <span>{{ box.empty ? "To be packed" : "To be delivered" }}</span>
+          <button class="btn btn-secondary mt-2">
+            Edit QR <i class="bi bi-pencil-square ml-2"></i>
+          </button>
+          <button class="btn btn-danger mt-1" (click)="deleteBox(box._id)">
+            Delete QR <i class="bi bi-trash3 ml-2"></i>
+          </button>
         </div>
       </div>
     </div>

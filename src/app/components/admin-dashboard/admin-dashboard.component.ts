@@ -9,8 +9,8 @@ interface Box {
   content: String;
   manufacturer: String;
   details: String;
-  qrb64: String;
   empty: Boolean;
+  qrb64: String;
 }
 
 @Component({
@@ -23,6 +23,18 @@ export class AdminDashboardComponent {
   pack = 0;
   deliver = 0;
   allboxes = 0;
+
+  box = {
+    label: '',
+    content: '',
+    manufacturer: '',
+    details: '',
+    empty: true,
+  };
+
+  createBox = false;
+  updateBox = false;
+
   boxes: Box[] = [];
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -71,5 +83,35 @@ export class AdminDashboardComponent {
       .subscribe((response) => {
         this.getAllBoxes();
       });
+  }
+
+  editBox(e: any) {
+    console.log(e);
+  }
+
+  generateBox(bool: boolean) {
+    this.createBox = bool;
+  }
+
+  createNewBox(): void {
+    const url = `${environment.backend_url}/createbox`;
+    const body = {
+      label: this.box.label,
+      content: this.box.content,
+      manufacturer: this.box.manufacturer,
+      details: this.box.details,
+      empty: this.box.empty,
+    };
+    console.log(body);
+
+    this.http.post<any>(url, body).subscribe((response) => {
+      console.log('sucess');
+      console.log(response); // log response for debugging purposes
+      if (response.success) {
+        alert('Box created successfully!');
+      } else {
+        alert(response.message); // show error message returned by API
+      }
+    });
   }
 }

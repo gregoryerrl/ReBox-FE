@@ -9,6 +9,8 @@ interface Box {
   content: String;
   manufacturer: String;
   details: String;
+  qrb64: String;
+  empty: Boolean;
 }
 
 @Component({

@@ -1,1 +1,12 @@
-{{box.label}} {{box.content}} {{box.manufacturer}} {{box.details }} {{box._id}}
+<div class="p-5 d-flex flex-column">
+  <span><strong>Label:</strong> {{box.label}}</span>
+  <span><strong>Contents:</strong> {{box.content}}</span>
+  <span><strong>Manufacturer:</strong> {{box.manufacturer}}</span>
+  <span><strong>Details:</strong> {{box.details}}</span>
+  <span><strong>BID:</strong> {{box._id}}</span>
+  <span class="mt-4"
+    ><strong>{{ box.empty ? "To be refilled" : "In Warehouse" }}</strong></span
+  >
+
+  <img style="width: 250px" id="base64image" src="{{ box.qrb64 }}" />
+</div>

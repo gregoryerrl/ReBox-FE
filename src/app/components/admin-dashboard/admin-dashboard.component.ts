@@ -23,6 +23,8 @@ export class AdminDashboardComponent {
   pack = 0;
   deliver = 0;
   allboxes = 0;
+  selectedBoxId = '';
+  selectedBox: Box = {} as Box;
 
   box = {
     label: '',
@@ -85,8 +87,10 @@ export class AdminDashboardComponent {
       });
   }
 
-  editBox(e: any) {
-    console.log(e);
+  cancelEditBox() {
+    this.updateBox = false;
+    this.selectedBoxId = '';
+    this.selectedBox = {} as Box;
   }
 
   generateBox(bool: boolean) {
@@ -102,11 +106,44 @@ export class AdminDashboardComponent {
       details: this.box.details,
       empty: this.box.empty,
     };
-    console.log(body);
+    console.log(url);
 
     this.http.post<any>(url, body).subscribe((response) => {
       console.log('sucess');
       console.log(response); // log response for debugging purposes
+      if (response.success) {
+        alert('Box created successfully!');
+      } else {
+        alert(response.message); // show error message returned by API
+      }
+    });
+  }
+
+  selectEdit(box: any) {
+    this.updateBox = true;
+    this.selectedBoxId = box._id;
+    this.selectedBox = box;
+  }
+
+  updateBoxDetails() {
+    const url = `${environment.backend_url}/box/${this.selectedBoxId}`;
+
+    const label = '';
+    const content = '';
+    const manufacturer = '';
+    const details = '';
+    const empty = undefined;
+
+    const payload: any = {
+      label: this.box.label,
+      content: this.box.content,
+      manufacturer: this.box.manufacturer,
+      details: this.box.details,
+      empty: this.box.empty,
+    };
+
+    // Send the PUT request with the non-empty payload
+    this.http.put<any>(url, payload).subscribe((response) => {
       if (response.success) {
         alert('Box created successfully!');
       } else {

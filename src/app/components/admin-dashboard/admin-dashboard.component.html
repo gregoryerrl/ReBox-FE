@@ -79,7 +79,7 @@
             <img class="mx-auto" id="base64image" src="{{ box.qrb64 }}" />
             <span>Label: {{ box.label }}</span>
             <span>{{ box.empty ? "To be packed" : "To be delivered" }}</span>
-            <button class="btn btn-secondary mt-2" (click)="editBox(box)">
+            <button class="btn btn-secondary mt-2" (click)="selectEdit(box)">
               Edit QR <i class="bi bi-pencil-square ml-2"></i>
             </button>
             <button class="btn btn-danger mt-1" (click)="deleteBox(box._id)">
@@ -89,14 +89,14 @@
         </div>
       </div>
     </div>
-    <div *ngIf="createBox">
+    <div *ngIf="createBox && !updateBox">
       <div class="d-flex justify-content-center align-items-center w-50">
         <div class="card p-5 w-100">
           <h2 class="text-center">
             Generate New QR <i class="bi bi-qr-code-scan qrup p-0 ml-3"></i>
           </h2>
           <form
-            (ngSubmit)="createNewBox()"
+            (ngSubmit)="createNewBox(); getAllBoxes(); generateBox(false)"
             class="d-flex flex-column justify-content-center w-100 mt-4"
           >
             <div class="form-outline mb-4">
@@ -132,8 +132,7 @@
                 class="w-100"
                 type="text"
                 name="detailsInput"
-                placeholder="
-              More Details"
+                placeholder="More Details"
                 [(ngModel)]="box.details"
               ></textarea>
             </div>
@@ -142,7 +141,70 @@
               Create QR
             </button>
           </form>
-          <button class="btn btn-danger" (click)="generateBox(false)">
+          <button
+            class="btn btn-danger"
+            (click)="generateBox(false); getAllBoxes()"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="updateBox">
+      <div class="d-flex justify-content-center align-items-center w-50">
+        <div class="card p-5 w-100">
+          <h2 class="text-center">
+            Edit [{{ selectedBox.label }}]
+            <i class="bi bi-pencil-square ml-2"></i>
+          </h2>
+          <form
+            (ngSubmit)="updateBoxDetails(); getAllBoxes(); cancelEditBox()"
+            class="d-flex flex-column justify-content-center w-100 mt-4"
+          >
+            <div class="form-outline mb-4">
+              <input
+                class="w-100"
+                type="text"
+                name="labelInput"
+                placeholder="{{ selectedBox.label }}"
+                [(ngModel)]="box.label"
+              />
+            </div>
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <textarea
+                class="w-100"
+                type="text"
+                name="contentInput"
+                placeholder="{{ selectedBox.content }}"
+                [(ngModel)]="box.content"
+              ></textarea>
+            </div>
+            <div class="form-outline mb-4">
+              <input
+                class="w-100"
+                type="text"
+                name="manufacturerInput"
+                placeholder="{{ selectedBox.manufacturer }}"
+                [(ngModel)]="box.manufacturer"
+              />
+            </div>
+            <div class="form-outline mb-4">
+              <textarea
+                class="w-100"
+                type="text"
+                name="detailsInput"
+                placeholder="{{ selectedBox.details }}"
+                [(ngModel)]="box.details"
+              ></textarea>
+            </div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+          </form>
+          <button
+            class="btn btn-danger"
+            (click)="cancelEditBox(); getAllBoxes()"
+          >
             Cancel
           </button>
         </div>

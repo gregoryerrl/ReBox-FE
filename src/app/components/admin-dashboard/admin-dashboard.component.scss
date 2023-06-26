@@ -9,6 +9,17 @@
   background-color: #ff9900;
   position: absolute;
   z-index: -1;
+  transition: ease-in-out 0.4s;
+}
+
+.orangebannerhidden {
+  width: 0vw;
+  border-radius: 200px;
+  height: 30vh;
+  background-color: #ff9900;
+  position: absolute;
+  z-index: -1;
+  transition: ease-in-out 0.4s;
 }
 
 .navi {
@@ -85,8 +96,6 @@
 }
 
 .createbox {
-  position: absolute;
-  right: 2rem;
   background-color: #003b73;
   color: white;
 }
@@ -97,4 +106,19 @@ h1 {
 
 .statscontainer {
   justify-content: space-evenly;
+}
+
+.boxescontainer {
+  height: 100vh;
+  width: 80%;
+  overflow-y: scroll;
+}
+
+.qrup {
+  font-size: 2rem;
+}
+
+.genbutton {
+  background-color: #003b73;
+  border-color: #003b73;
 }

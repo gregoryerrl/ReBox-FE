@@ -44,7 +44,7 @@
         Hello, Admin. Welcome to your
         <strong style="color: rgb(166, 97, 0)">ReBox!</strong> Dashboard
       </h1>
-      <div class="statscontainer d-flex mt-5 w-100">
+      <div class="statscontainer d-flex my-5 w-100">
         <div class="card col-3 text-center p-5">
           <h5>Total QR <i class="bi bi-qr-code-scan ml-2"></i></h5>
           <h2>{{ allboxes }}</h2>
@@ -56,6 +56,39 @@
         <div class="card col-3 text-center p-5">
           <h5>To be delivered <i class="bi bi-truck ml-2"></i></h5>
           <h2>{{ deliver }}</h2>
+        </div>
+      </div>
+      <div class="card p-2">
+        <div class="mapouter">
+          <div class="gmap_canvas">
+            <iframe
+              class="gmap_iframe"
+              width="100%"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+              src="https://maps.google.com/maps?width=683&amp;height=400&amp;hl=en&amp;q=World Trade Center, Pasay&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            ></iframe
+            ><a href="https://gachanox.io/">Gacha Nox</a>
+          </div>
+          <style>
+            .mapouter {
+              position: relative;
+              text-align: right;
+              width: 100%;
+              height: 400px;
+            }
+            .gmap_canvas {
+              overflow: hidden;
+              background: none !important;
+              width: 100%;
+              height: 400px;
+            }
+            .gmap_iframe {
+              height: 400px !important;
+            }
+          </style>
         </div>
       </div>
     </div>

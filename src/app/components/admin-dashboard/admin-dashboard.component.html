@@ -109,7 +109,9 @@
       <div class="d-flex flex-wrap w-auto mt-5 boxcards">
         <div class="card col-3 p-2 m-3 text-center" *ngFor="let box of boxes">
           <div class="boxlist d-flex flex-column mt-3 justify-content-center">
-            <img class="mx-auto" id="base64image" src="{{ box.qrb64 }}" />
+            <a href="#/box/details/{{ box._id }}" target="_blank"
+              ><img class="mx-auto" id="base64image" src="{{ box.qrb64 }}"
+            /></a>
             <span>Label: {{ box.label }}</span>
             <span>{{ box.empty ? "To be packed" : "To be delivered" }}</span>
             <button class="btn btn-secondary mt-2" (click)="selectEdit(box)">

@@ -1,4 +1,4 @@
-<div class="p-1 d-flex flex-column">
+<div class="p-1 d-flex flex-column" *ngIf="access == true">
   <div class="card p-2">
     <span><strong>Label:</strong> {{box.label}}</span>
     <span><strong>Contents:</strong> {{box.content}}</span>
@@ -45,5 +45,31 @@
         }
       </style>
     </div>
+  </div>
+</div>
+<div
+  class="fullpage d-flex justify-content-center align-items-center"
+  *ngIf="access == false"
+>
+  <div class="card p-5">
+    <form
+      (ngSubmit)="accessKey()"
+      class="d-flex flex-column justify-content-center"
+    >
+      <div class="form-outline mb-4">
+        <input
+          type="text"
+          name="keyInput"
+          placeholder="Enter Key"
+          [(ngModel)]="keyinput"
+        />
+        <button
+          type="button submit"
+          class="btn btn-primary btn-block mt-4 float-center align-self-center"
+        >
+          Enter
+        </button>
+      </div>
+    </form>
   </div>
 </div>

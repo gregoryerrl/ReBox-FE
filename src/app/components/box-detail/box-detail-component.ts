@@ -20,6 +20,9 @@ interface Box {
 })
 export class BoxDetailComponent {
   id = '';
+  key = '54321';
+  keyinput = '';
+  access = false;
   box = {} as Box;
   constructor(
     private http: HttpClient,
@@ -39,5 +42,17 @@ export class BoxDetailComponent {
         // Filter the user list to include only active users
         this.box = response.box;
       });
+  }
+
+  accessKey() {
+    if (this.key == this.keyinput) {
+      this.access = true;
+      console.log('Success');
+    } else if (this.key != this.keyinput) {
+      alert('Wrong Key');
+    }
+    console.log(this.key);
+
+    console.log(this.keyinput);
   }
 }
